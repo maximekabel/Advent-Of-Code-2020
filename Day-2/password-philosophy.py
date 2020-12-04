@@ -1,7 +1,8 @@
 file = open("Day-2/input.txt")
 input = file.read().splitlines()
 
-correct_passw = 0
+correct_passw1 = 0
+correct_passw2 = 0
 
 test_list = []
 for i in input:
@@ -13,9 +14,24 @@ for i in input:
     test_list.append(dic)
 
 
-for k in test_list:
-    occurance = k["password"].count(k["char"])
-    if occurance >= k["lower"] and occurance <= k["upper"]:
-        correct_passw += 1
+for m in test_list:
+    occurance = m["password"].count(m["char"])
+    if occurance >= m["lower"] and occurance <= m["upper"]:
+        correct_passw1 += 1
 
-print(correct_passw)
+for k in test_list:
+    try:
+        char_pos_a = k["password"][k["lower"] - 1]
+    except:
+        continue
+    try:
+        char_pos_b = k["password"][k["upper"] - 1]
+    except:
+        continue
+    if (char_pos_a == k["char"] and char_pos_b != k["char"]) or (
+        char_pos_a != k["char"] and char_pos_b == k["char"]
+    ):
+        correct_passw2 += 1
+
+print(correct_passw1)
+print(correct_passw2)
