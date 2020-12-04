@@ -20,14 +20,10 @@ for m in test_list:
         correct_passw1 += 1
 
 for k in test_list:
-    try:
-        char_pos_a = k["password"][k["lower"] - 1]
-    except:
-        continue
-    try:
-        char_pos_b = k["password"][k["upper"] - 1]
-    except:
-        continue
+
+    char_pos_a = k["password"][k["lower"] - 1]
+    char_pos_b = k["password"][k["upper"] - 1]
+
     if (char_pos_a == k["char"] and char_pos_b != k["char"]) or (
         char_pos_a != k["char"] and char_pos_b == k["char"]
     ):
