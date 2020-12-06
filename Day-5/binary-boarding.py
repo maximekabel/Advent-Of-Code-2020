@@ -12,7 +12,7 @@ def back(interval):
     return [math.ceil((interval[0] + interval[1]) / 2), interval[1]]
 
 
-highest = 0
+all_seatID = []
 
 for i in input:
     row_interval = [0, 127]
@@ -32,6 +32,13 @@ for i in input:
     col = col_interval[0]
 
     seatID = row * 8 + col
-    if seatID > highest:
-        highest = seatID
-print(highest)
+    all_seatID.append(seatID)
+
+all_seatID.sort()
+
+my_seat = 0
+for i in all_seatID:
+    my_seat = i + 1
+    if not my_seat in all_seatID:
+        break
+print(my_seat)
